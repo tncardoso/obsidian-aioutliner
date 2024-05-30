@@ -1,4 +1,6 @@
 import { createHash } from 'crypto';
+import { toMarkdown } from 'mdast-util-to-markdown';
+import { Nodes } from 'mdast-util-to-markdown/lib';
 
 export class TreeNode {
 	sha1: string;
@@ -20,10 +22,11 @@ export class Tree {
 	constructor() {
 	}
 
-	hash(obj: object): string {
+	hash(obj: Nodes): string {
 		const shasum = createHash('sha1');
-		shasum.update(JSON.stringify(obj));
-		return shasum.digest('hex');
+		shasum.update(toMarkdown(obj));
+		const res = shasum.digest('hex');
+		return res;
 	}
 		
 	push(node: TreeNode) {
