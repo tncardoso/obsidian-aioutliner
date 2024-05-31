@@ -1,9 +1,9 @@
-import { Notice, getFrontMatterInfo } from 'obsidian';
+import { getFrontMatterInfo } from 'obsidian';
 import { fromMarkdown } from 'mdast-util-from-markdown';
 import { toMarkdown } from 'mdast-util-to-markdown';
 import { OpenAI } from 'openai';
 import { Tree, TreeNode } from './tree';
-import YAML from 'yaml';
+import * as YAML from 'yaml';
 
 export class GeneratorResult {
 	resultContent: string
@@ -58,7 +58,7 @@ ${outline}
 		return result;
 	}
 
-	async createFile(outline: string, target: string, callback: (content: string) => any) {
+	async createFile(outline: string, target: string, callback: (content: string) => void) {
 		const outlineFront = getFrontMatterInfo(outline);
 		const outlineMd = fromMarkdown(outline.slice(outlineFront.contentStart));
 

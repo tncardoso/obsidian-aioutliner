@@ -15,7 +15,8 @@ export class TreeNode {
 }
 
 export class Tree {
-	// Index in root, index if list, and hash of node.
+	// This could be a Merkle Tree if more control is needed.
+	// For now, is just a simple list of known hashes.
 	tree: Array<TreeNode> = [];
 	hashes: Map<string, TreeNode> = new Map();
 
