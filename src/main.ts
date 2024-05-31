@@ -26,7 +26,7 @@ export class AIOutlinerView extends MarkdownView {
 	}
 }
 
-export default class MyPlugin extends Plugin {
+export default class AIOutlinerPlugin extends Plugin {
 	settings: AIOutlinerSettings;
 	openai: OpenAI;
 
@@ -169,9 +169,9 @@ class SampleModal extends Modal {
 }
 
 class AIOutlinerSettingTab extends PluginSettingTab {
-	plugin: MyPlugin;
+	plugin: AIOutlinerPlugin;
 
-	constructor(app: App, plugin: MyPlugin) {
+	constructor(app: App, plugin: AIOutlinerPlugin) {
 		super(app, plugin);
 		this.plugin = plugin;
 	}
