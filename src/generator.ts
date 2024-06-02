@@ -24,14 +24,15 @@ export class Generator {
 
 	async llm(context: string, outline: string) {
 		const prompt = `
-Você é um escritor e revisor de texto. Seu objetivo é escrever um parágrafo a partir do outline e o texto até aquele ponto (contexto).
+Act as a writer and proofreader. Your objective is to write a paragraph given the paragraph's outline and text so far (context).
 
-## Instruções
+## Instructions
 
-- A saída deve conter apenas o parágrafo relativo ao outline
-- Escreva de forma clara e concisa
+- The output should contain only the paragraph related to the outline
+- Write clearly and concisely
+- The paragraph should be in the same language as the outline
 
-## Contexto
+## Context
 
 \`\`\`
 ${context}
