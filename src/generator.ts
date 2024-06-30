@@ -61,7 +61,8 @@ ${outline}
 
 	async createFile(outline: string, target: string, callback: (content: string) => void) {
 		const outlineFront = getFrontMatterInfo(outline);
-		const outlineMd = fromMarkdown(outline.slice(outlineFront.contentStart));
+		const outlinePreContent = outline.slice(outlineFront.contentStart);
+		const outlineMd = fromMarkdown(outlinePreContent);
 
 		const resultMd = fromMarkdown('');
 		const resultFront = getFrontMatterInfo(target);
@@ -109,7 +110,7 @@ ${outline}
 		const outlineHeader = '---\n' + YAML.stringify(frontData) + '\n---\n';
 
 		const resultContent = header + toMarkdown(resultMd);
-		const outlineContent = outlineHeader + toMarkdown(outlineMd);
+		const outlineContent = outlineHeader + outlinePreContent;
 		return new GeneratorResult(resultContent, outlineContent);
 	}
 }
